@@ -1,0 +1,35 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <div class="content-page">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="container">
+          <h3>Product Details</h3>
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">edit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @products.each do |p| %>
+                    <tr>
+                    <td><%= p.name %></td>
+                    <td><%= image_tag(p.image.url, style: 'height:50px;width:auto;')%></td>
+                    <td><%= p.price%></td>
+                    <td><%= p.quantity%></td>
+                    <%# <td><%= link_to "Edit", edit_product_path(@products) %></td> %>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
