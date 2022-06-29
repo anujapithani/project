@@ -1,11 +1,17 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+  <h5 class="fw-bold">products page</h5>
+  <form class="d-flex">
+    <a class="nav-link" href="/logout">Logout</a>
+   </form>
+   </div>
+</nav>
     <div class="content-page">
       <div class="content">
         <div class="container-fluid">
           <div class="container">
-          <h3>Product Details</h3>
+          <h3>Products List</h3>
 
             <table class="table table-bordered">
                 <thead>
@@ -15,21 +21,28 @@
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">edit</th>
+                    <th scope="col">delete</th>
+                     <th scope="col">show</th>
                 </tr>
                 </thead>
                 <tbody>
-                <% @products.each do |p| %>
+                <% @products.each do |product| %>
                     <tr>
-                    <td><%= p.name %></td>
-                    <td><%= image_tag(p.image.url, style: 'height:50px;width:auto;')%></td>
-                    <td><%= p.price%></td>
-                    <td><%= p.quantity%></td>
-                    <%# <td><%= link_to "Edit", edit_product_path(@products) %></td> %>
+                    <td><%= product.name %></td>
+                    <%# <td><%= p.image%></td>
+                    <td><%= image_tag(product.image.url, style: 'height:50px;width:auto;')%></td> 
+                    <td><%= product.price%></td>
+                    <td><%= product.quantity%></td>
+                    <td><%= link_to 'Edit', edit_product_path(product.id) %></td>
+                    <td><%= button_to 'Delete', product_path(product), method: 'delete'%></td>
+                    <td><%= link_to 'Show', product_path(product) %></td> 
                     </tr>
                 <% end %>
                 </tbody>
             </table>
+             <a href="/products/new">add_new_product</a> 
             </div>
         </div>
     </div>
 </div>
+

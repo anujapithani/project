@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'products/new'
-  get 'products/index'
-  get 'products/edit'
-  get 'products/destroy'
 
   get 'sessions/new'
   get 'sessions/create'
@@ -13,6 +9,11 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  get '/add_to_cart/:id' => 'carts#add_to_cart'
+  get '/shopping' => 'shoppings#show'
+  get '/lineitem' => 'line_items#show'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

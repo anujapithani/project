@@ -11,8 +11,7 @@
       <div class="row justify-content-center">
         <div class="row">
           <div>
-          <%= form_with scope: :products, url: products_path, local: true do |form| %>
-            
+          <%= form_with scope: :product, url: products_path, local: true do |form| %>
               <div class="form-group">
                 <%= form.label :name %>
                   <%= form.text_field :name, class: 'form-control' %>
@@ -39,6 +38,9 @@
 
               <div>
                <a href="/">home page</a> 
+               </div>
+               <div>
+                <a href="/products">products page</a> 
               </div>
             <% end %>
       </div>

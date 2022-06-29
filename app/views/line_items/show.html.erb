@@ -1,0 +1,37 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <div class="content-page">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="container">
+          <h3>Line_Items List</h3>
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Product_Id</th>
+                    <th scope="col">Cart_Id</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @lineitems.each do |lineitem| %>
+                    <tr>
+                    <td><%= lineitem.product_id %></td>
+                    <td><%= lineitem.cart_id %></td> 
+                    <td><%= lineitem.price%></td>
+                    <td><%= lineitem.quantity%></td>
+                     
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+           
+            </div>
+        </div>
+    </div>
+</div>
+
+

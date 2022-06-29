@@ -1,0 +1,24 @@
+<div class="container">
+    <h4>Show details of product <%= @product.id %></h4>
+</div>
+<div class="container">
+<div class="row">
+        <div class="col">
+        <strong>Name:</strong><%= @product.name %>
+        </div>
+
+        <div class="col">
+        <%= image_tag(@product.image.url, style: 'height:250px;width:auto;')%> 
+        </div>
+
+        <div class="col">
+        <strong>price:</strong><%= @product.price%>
+        </div>
+
+        <div class="col">
+        <strong>quantity:</strong><%= @product.quantity%>
+        </div>
+        <a href="/products/index">back_to_products</a> 
+    </div>
+  </div>
+</div>
