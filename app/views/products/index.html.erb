@@ -1,48 +1,40 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
   <h5 class="fw-bold">products page</h5>
   <form class="d-flex">
-    <a class="nav-link" href="/logout">Logout</a>
+     <a class="nav-link" href="/logout">Logout</a>
    </form>
    </div>
 </nav>
-    <div class="content-page">
-      <div class="content">
-        <div class="container-fluid">
-          <div class="container">
-          <h3>Products List</h3>
 
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">edit</th>
-                    <th scope="col">delete</th>
-                     <th scope="col">show</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% @products.each do |product| %>
-                    <tr>
-                    <td><%= product.name %></td>
-                    <%# <td><%= p.image%></td>
-                    <td><%= image_tag(product.image.url, style: 'height:50px;width:auto;')%></td> 
-                    <td><%= product.price%></td>
-                    <td><%= product.quantity%></td>
-                    <td><%= link_to 'Edit', edit_product_path(product.id) %></td>
-                    <td><%= button_to 'Delete', product_path(product), method: 'delete'%></td>
-                    <td><%= link_to 'Show', product_path(product) %></td> 
-                    </tr>
-                <% end %>
-                </tbody>
-            </table>
-             <a href="/products/new">add_new_product</a> 
-            </div>
-        </div>
-    </div>
+<div class="container">
+  <h3>Products List</h3>
+  <table class="table table-bordered">
+      <thead>
+      <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">edit</th>
+          <th scope="col">delete</th>
+          <th scope="col">show</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @products.each do |product| %>
+      <tr>
+          <td><%= product.name %></td>
+          <td><%= image_tag(product.image.url, style: 'height:50px;width:auto;')%></td> 
+          <td><%= product.price%></td>
+          <td><%= product.quantity%></td>
+          <td><%= link_to 'Edit', edit_product_path(product.id) %></td>
+          <td><%= button_to 'Delete', product_path(product), method: 'delete'%></td>
+          <td><%= link_to 'Show', product_path(product) %></td> 
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <a href="/products/new">add_new_product</a> 
 </div>
-
+    

@@ -1,39 +1,50 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src ="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-  <h6 class="fw-bold">shopping website</h6>
-  <form class="d-flex">
-     <a href="/lineitem"><i class="bi bi-cart3" style="font-size: 2rem;"> <%=LineItem.count %></i></a>
-    <a class="nav-link" href="/logout">Logout</a>
-   </form>
+  <h4 class="fw-bold">shopping website</h4>
+    <form class="d-flex">
+        <a href="/lineitem"><i class="bi bi-cart3" style="font-size: 2rem;"> <%= @line_item_count %></i></a>
+        <a class="nav-link" href="/addresses/new"> <i class="bi bi-person-square" style="font-size: 2rem;"></i></a>
+        <a class="nav-link" href="/logout">Logout</a>
+    </form>
    </div>
 </nav>
 
-<h2>All Products</h2>
-<div class="grid">
+<div class="container-fluid h-100">
+        <div class="row h-100 ">
+            <div class="col-2 bg-light mb-5">
+               <ul class ="nav navbar-nav">
+                    <li class ="nav-item">
+                       <a class ="nav-link" href="/orders"><i class="bi bi-grid p-2"></i>My Orders </a>
+                    </li>
+                    <li class ="nav-item">
+                       <a class ="nav-link" href="/addresses"><i class="bi bi-house p-2"></i>Addresses </a>
+                    </li>
+                    <li class ="nav-item">
+                       <a class ="nav-link" href="#"><i class="bi bi-x-diamond-fill p-2"></i> My Rewards </a>
+                    </li>   
+                </ul>
+            </div>
 
-<div>
-    <%= flash[:notice] if flash[:notice]%>
-</div>
-
-<% @products.each do |product| %>
-        <div>
-        <strong>Name:</strong><%= product.name %>
+            <div class="col-9">
+            <h3>All Products</h3>
+              <div class="grid">
+                <div>
+                    <%= flash[:notice] if flash[:notice]%>
+                </div>
+                <% @products.each do |product| %>
+                <div class = "mb-5">
+                    <strong>Name:</strong><%= product.name %>
+                    <%= image_tag(product.image.url, style: 'height:250px;width:auto;')%> 
+                    <strong>price:</strong><%= product.price%>
+                    <strong>quantity:</strong><%= product.quantity%>
+                    <button type="button" class="btn btn-light"><%= link_to 'Add to Cart', "add_to_cart/#{product.id}" %></button>
+                </div>
+                <%end%>
+            </div>
         </div>
-
-        <div>
-        <%= image_tag(product.image.url, style: 'height:250px;width:auto;')%> 
-        </div>
-
-        <div>
-        <strong>price:</strong><%= product.price%>
-        </div>
-
-        <div>
-        <strong>quantity:</strong><%= product.quantity%>
-        </div>
-        <%= link_to 'add_to_cart', "add_to_cart/#{product.id}" %>
-    <%end%>
+   </div>
 </div>

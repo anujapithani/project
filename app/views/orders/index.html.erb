@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Orders Details</h2>
+  <div class="row">
+    <% @orders.each do |order| %>
+      <% order.line_items.each do |line_item| %>
+
+        <div class="col">
+            <strong>Name :</strong><%= line_item.product.name %>
+        </div>
+
+        <div class="col">
+            <strong>Image :</strong><%= image_tag(line_item.product.image.url, style: 'height:100px;width:auto;')%>
+        </div>
+
+        <div class="col">
+            <strong>Price :</strong><%= line_item.product.price %>
+        </div>
+
+        <div class="col">
+            <strong>Quantity :</strong><%= line_item.quantity %>
+        </div>
+        <button type="button" class="btn btn-dark">check status</button>
+       <% end %>
+       <hr>
+     <% end %>
+   </div>
+   <a href="/shopping">Shopping page</a>
+</div>

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       redirect_to '/signup'
     end
   end
+  
   private
     def user_params
       params.require(:user).permit(:user_name, :email, :password)

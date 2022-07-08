@@ -1,37 +1,37 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <div class="content-page">
-      <div class="content">
-        <div class="container-fluid">
-          <div class="container">
-          <h3>Line_Items List</h3>
+<div class="container">
+<h3>Line_Items List</h3>
 
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Product_Id</th>
-                    <th scope="col">Cart_Id</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% @lineitems.each do |lineitem| %>
-                    <tr>
-                    <td><%= lineitem.product_id %></td>
-                    <td><%= lineitem.cart_id %></td> 
-                    <td><%= lineitem.price%></td>
-                    <td><%= lineitem.quantity%></td>
-                     
-                    </tr>
-                <% end %>
-                </tbody>
-            </table>
-           
-            </div>
-        </div>
-    </div>
-</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">Qunatity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @lineitems.each do |lineitem| %>
+        <tr>
+            <td><%= lineitem.product.name%></td>  
+            <td><%= image_tag(lineitem.product.image.url, style: 'height:200px;width:auto;')%> </td>
+            <td><%= lineitem.price%></td>
+            <td><%= lineitem.quantity%></td>    
+        </tr>
+        <% end %> 
+    </tbody>
+  </table>
+  <%= form_with  url: "/order/#{@cart.id}" do |form| %>
+    <% @addresses.each do |address|%>
+      <strong><%= form.label :address, address.address_line_1%></strong><br>
+    <%end%>
+
+      <button type="submit" class="btn btn-light">Order Now</button> 
+
+ <%end%>
+ </div>
+
+ 
+
 
 
