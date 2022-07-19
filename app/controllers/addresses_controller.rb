@@ -1,25 +1,23 @@
 class AddressesController < ApplicationController
-def create
-    address = Address.new(address_params)
-    address.user_id = session[:user_id]
-    address.save
-    redirect_to "/shopping"
-end
+before_action :check_login
 
-def new
-    @address = Address.new
-end
+    def create
+        address = Address.new(address_params)
+        address.user_id = session[:user_id]
+        address.save
+        redirect_to "/shopping"
+    end
 
-def show
-    @address = Address.all
-end
+    def new
+        @address = Address.new
+    end
 
-def index
-    @address = Address.all
-end
+    def index
+        @address = Address.where(user_id: session[:user_id])
+    end
 
-private
-  def address_params
-    params.require(:address).permit(:user_id,:address_line_1, :address_line_1, :city,:state, :zip)
-end
+    private
+    def address_params
+        params.require(:address).permit(:user_id,:address_line_1, :address_line_2, :city,:state, :zip)
+    end
 end

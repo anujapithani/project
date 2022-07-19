@@ -20,16 +20,19 @@
         </tr>
         <% end %> 
     </tbody>
-  </table>
+</table>
+  
   <%= form_with  url: "/order/#{@cart.id}" do |form| %>
-    <% @addresses.each do |address|%>
-      <strong><%= form.label :address, address.address_line_1%></strong><br>
-    <%end%>
+  <strong><%=form.label  :address%></strong><br>
+        <% @addresses.each do |address|%>
+            <%= form.radio_button :address_id, address.id , :checked => true %>
+            <%= form.label :address, address.address_line_1%><br>
+        <%end%>
+    <button type="submit" class="btn btn-light">Order Now</button> 
+  <%end%>
+  <%= link_to 'shopping page', '/shopping'%> 
+</div>
 
-      <button type="submit" class="btn btn-light">Order Now</button> 
-
- <%end%>
- </div>
 
  
 

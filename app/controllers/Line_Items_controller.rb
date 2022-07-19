@@ -1,5 +1,6 @@
 class LineItemsController < ApplicationController
-    def show
+before_action :check_login
+    def check_out
         @cart = Cart.where(user_id:session[:user_id]).first
         @lineitems = @cart.line_items
         @addresses = Address.where(user_id:session[:user_id])

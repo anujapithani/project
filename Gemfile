@@ -70,6 +70,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda-matchers'
 end
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'   

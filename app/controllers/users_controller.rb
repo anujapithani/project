@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice]="Signup successful"
+      redirect_to '/login'
     else
       Rails.logger.info @user.errors.full_messages
       flash[:notice]= @user.errors.full_messages
